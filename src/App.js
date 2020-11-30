@@ -14,6 +14,7 @@ function App() {
   // will only run once when the app component loads
   useEffect(() => {
     auth.onAuthStateChanged(authUser => {
+      console.log('user', authUser)
       if (authUser) {
         // the user just loggin in / the user was logged in 
         dispatch({
