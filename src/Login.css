@@ -28,8 +28,7 @@
       margin-bottom: 20px;
 }
 
-.login__container > form > h5 {
-      text-align: left;
+.login__container > form > h5 { 
       margin-bottom: 5px;
 }
 .login__container > form > input {
@@ -38,8 +37,7 @@
       background-color: white;
       width: 98%;
 }
-.login__container > p {
-      text-align: left;
+.login__container > p { 
      margin-top: 15px;
      font-size: 12px; 
 }

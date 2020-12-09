@@ -2,19 +2,26 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import { auth } from './firebase'
 import { useStateValue } from './StateProvider'
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
 import Header from './Header';
 import Checkout from './Checkout'
+import Payment from './Payment'
 import Home from './Home'
+import Orders from './Orders'
 import Login from './Login'
 import './App.css';
+
+const promise = loadStripe(
+  "pk_test_UhqomHM46Rq7TTGleeocavRz00pfH0nIYz"
+)
 
 function App() {
   const [{}, dispatch] = useStateValue()
 
   // will only run once when the app component loads
   useEffect(() => {
-    auth.onAuthStateChanged(authUser => {
-      console.log('user', authUser)
+    auth.onAuthStateChanged(authUser => { 
       if (authUser) {
         // the user just loggin in / the user was logged in 
         dispatch({
@@ -36,6 +43,11 @@ function App() {
       <div className="App">
         <Switch>
 
+          <Route path="/orders">
+            <Header />
+            <Orders />
+          </Route>
+
           <Route path="/login">
             <Login />
           </Route>
@@ -43,6 +55,13 @@ function App() {
           <Route path="/checkout">
             <Header />
             <Checkout />
+          </Route>
+
+          <Route path="/payment">
+            <Header />
+            <Elements stripe={promise}>
+              <Payment />
+            </Elements>
           </Route>
 
           {/* default route always has to be at the bottom */}
