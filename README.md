@@ -1,3 +1,6 @@
+Firebase Hosting URL: https://clone-19087.web.app/
+Firebase api URL: https://us-central1-clone-19087.cloudfunctions.net/api 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
