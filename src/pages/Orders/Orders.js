@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { useStateValue } from "./StateProvider"
-import Order from './Order'
-import { db } from './firebase'
+import { useStateValue } from '../../StateProvider'
+import Order from '../../components/Order/Order'
+import { db } from '../../firebase'
 import './Orders.css'
 
 function Orders() {
-      const [{ basket, user, dispatch }] = useStateValue()
+      // eslint-disable-next-line
+      const [{ user }, dispatch] = useStateValue()
       const [ orders, setOrders ] = useState([])
 
       useEffect(() => {

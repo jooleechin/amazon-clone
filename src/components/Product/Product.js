@@ -1,9 +1,10 @@
 import React from 'react'
 import "./Product.css"
-import { useStateValue } from './StateProvider'
+import { useStateValue } from '../../StateProvider'
 
 function Product({ id, title, image, price, rating }) {
-      const [{ basket }, dispatch] = useStateValue()
+      // eslint-disable-next-line
+      const [{ }, dispatch] = useStateValue()
 
       const addToCart = () => {
             // dispatch item to db
@@ -32,13 +33,13 @@ function Product({ id, title, image, price, rating }) {
                               {Array(rating)
                                     .fill()
                                     .map((_, i) => (
-                                          <p>🌟</p>
+                                          <span role="img" aria-label="star emoji rating">🌟</span>
                               ))}
                         </p>
                   </div>
                   <img 
                         src={image}
-                        alt="product image"
+                        alt="product"
                   />
                   <button onClick={addToCart}>Add to Cart</button>
             </div>

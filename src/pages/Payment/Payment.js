@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { useStateValue } from './StateProvider'
-import CheckoutProduct from './CheckoutProduct'
+import { useStateValue } from '../../StateProvider'
+import CheckoutProduct from '../../components/Checkout/CheckoutProduct'
 import { Link, useHistory } from "react-router-dom"
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import CurrencyFormat from 'react-currency-format'
-import { getBasketTotal } from './reducer'
-import axios from './axios'
-import { db } from './firebase'
+import { getBasketTotal } from '../../reducer'
+import axios from '../../axios'
+import { db } from '../../firebase'
 import "./Payment.css"
 
 function Payment() {
@@ -40,7 +40,7 @@ function Payment() {
             e.preventDefault()
             setProcessing(true)
 
-            const payload = await stripe.confirmCardPayment(clientSecret, {
+            await stripe.confirmCardPayment(clientSecret, {
                   payment_method: {
                         card: elements.getElement(CardElement)
                   }

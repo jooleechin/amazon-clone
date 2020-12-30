@@ -4,12 +4,12 @@ import { auth } from './firebase'
 import { useStateValue } from './StateProvider'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
-import Header from './Header';
-import Checkout from './Checkout'
-import Payment from './Payment'
-import Home from './Home'
-import Orders from './Orders'
-import Login from './Login'
+import Header from './components/Header/Header';
+import Checkout from './pages/Checkout/Checkout'
+import Payment from './pages/Payment/Payment'
+import Home from './pages/Home/Home'
+import Orders from './pages/Orders/Orders'
+import Login from './pages/Login/Login'
 import './App.css';
 
 const promise = loadStripe(
@@ -17,6 +17,7 @@ const promise = loadStripe(
 )
 
 function App() {
+  // eslint-disable-next-line
   const [{}, dispatch] = useStateValue()
 
   // will only run once when the app component loads
